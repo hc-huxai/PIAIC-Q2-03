@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { getDate } from "@/actions/getDate";
 import ClapIcon from "@/components/clap-icon";
 import { blogData } from "@/data/blog";
 import { BookmarkPlus, MessageCircle, PlayCircle, Share } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
 interface BlogProps {
   params: {
     publisher: string;
@@ -20,21 +22,10 @@ const Blog: React.FC<BlogProps> = ({ params }) => {
   const { publisher } = blog!;
   const { author } = publisher;
 
-  const getDate = (dateStr: string) => {
-    const date = new Date();
-    date.setDate(+dateStr.split("/")[0]);
-    date.setMonth(+dateStr.split("/")[1] - 1);
-    date.setFullYear(+dateStr.split("/")[2]);
-
-    return date.toLocaleString("en-US", {
-      month: "short",
-      day: "2-digit",
-      year: "numeric",
-    });
-  };
+  
 
   return (
-    <main className="py-16 w-[680px] max-w-[96%] mx-auto">
+    <main className="py-12 w-[680px] max-w-[96%] mx-auto">
       {/* Blog Title */}
       <h1 className="py-8 font-extrabold text-primary text-[40px] leading-snug tracking-tight">
         {blog?.title}

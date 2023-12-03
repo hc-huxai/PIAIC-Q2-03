@@ -12,6 +12,7 @@ interface Blog {
   title: string;
   slug: string;
   readingTime: string;
+  category: string;
   content: Content[];
   link: string;
 }
@@ -70,6 +71,7 @@ export const blogData: Blog[] = [
         profile_pic: ClarkWrightImg,
       },
     },
+    category: 'Technology',
     readingTime: "9",
     createdAt: "30/11/2023",
     interactions: {
@@ -180,6 +182,7 @@ export const blogData: Blog[] = [
     id: "57dd9eea-5ffa-42b1-b886-71ef557060a4",
     title: "What We’re Reading: Are you busy or are you productive?",
     slug: "what-were-reading-are-you-busy-or-are-you-productive",
+    category: 'Intro',
     link: "https://blog.medium.com/what-were-reading-are-you-busy-or-are-you-productive-5beca01c0f3b",
     content: [
       {

@@ -8,18 +8,16 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <header className="w-full h-14 border-b border-b-gray-300 p-6 flex items-center justify-between gap-4 fixed top-0 bg-white z-10">
+    <header className="w-full h-14 border-b border-b-gray-300 p-6 flex items-center justify-between gap-4 bg-white z-10 fixed top-0">
       {/* Logo */}
       <div
         className="flex items-center gap-x-2 cursor-pointer opacity-100 hover:opacity-75 transition-opacity"
         onClick={() => router.push("/")}
       >
         <BookOpenText size={30} />{" "}
-        {window.location.pathname != '/' && (
-          <h1 className="text-2xl font-semibold font-serif tracking-tighter">
+          <h1 className="text-2xl md:hidden font-semibold font-serif tracking-tighter">
             Directory
           </h1>
-        )}
       </div>
 
       {/* Search Bar */}
@@ -40,7 +38,7 @@ const Navbar = () => {
       <div className="flex items-center gap-x-4">
         {/* Write Button */}
         <button className="flex items-center gap-x-1 text-gray-500 text-sm hover:text-black transition-colors">
-          <PenSquare size={12} /> Write
+          <PenSquare size={20} /> Write
         </button>
 
         {/* Auth Buttons */}
