@@ -49,10 +49,10 @@ export default function Home() {
                 <div className="flex flex-row justify-between">
                   {/* Data */}
                   <div className="flex items-start flex-col gap-y-2 h-40 w-[80%]">
-                    <h1 className="text-xl font-extrabold text-primary group-hover:text-gray-700 transition-colors">
+                    <h1 className="text-xl max-sm:text-lg font-extrabold text-primary group-hover:text-gray-700 transition-colors">
                       {blog.title}
                     </h1>
-                    <p className="text-ellipsis line-clamp-2 text-md font-serif text-gray-800">
+                    <p className="text-ellipsis line-clamp-2 max-sm:text-sm text-md font-serif text-gray-800">
                       {blog.content[1].values![1].value}
                     </p>
                   </div>

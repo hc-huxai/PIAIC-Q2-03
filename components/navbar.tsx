@@ -21,10 +21,10 @@ const Navbar = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="ml-0 mr-auto flex items-center gap-x-2 bg-gray-100 py-2 px-4 rounded-3xl">
+      <div className="ml-auto mr-0 sm:ml-0 sm:mr-auto flex items-center gap-x-2 bg-white sm:bg-gray-100 py-2 px-4 rounded-3xl">
         <input
           type="text"
-          className="focus:outline-none peer bg-gray-100 text-sm"
+          className="focus:outline-none sm:inline hidden peer bg-gray-100 text-sm"
           placeholder="Search"
         />
         <Search
