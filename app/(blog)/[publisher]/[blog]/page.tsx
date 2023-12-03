@@ -5,11 +5,27 @@ import { blogData } from "@/data/blog";
 import { BookmarkPlus, MessageCircle, PlayCircle, Share } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata, ResolvingMetadata } from "next";
 
 interface BlogProps {
   params: {
     publisher: string;
     blog: string;
+  };
+}
+
+// Dynamic Title and Description for Page
+export async function generateMetadata(
+  { params }: BlogProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const blog = blogData.find(
+    (data) =>
+      data.slug === params.blog && data.publisher.slug === params.publisher
+  );
+
+  return {
+    title: `${blog?.publisher.label} | ${blog?.title}`,
   };
 }
 
@@ -21,8 +37,6 @@ const Blog: React.FC<BlogProps> = ({ params }) => {
 
   const { publisher } = blog!;
   const { author } = publisher;
-
-  
 
   return (
     <main className="py-12 w-[680px] max-w-[96%] mx-auto">
@@ -57,7 +71,9 @@ const Blog: React.FC<BlogProps> = ({ params }) => {
           {/* Info */}
           <div className="flex flex-col gap-y-1">
             <div className="flex items-center gap-x-1 text-md">
-              <span className="font-medium cursor-pointer text-primary">{author.name}</span>
+              <span className="font-medium cursor-pointer text-primary">
+                {author.name}
+              </span>
               <span>·</span>
               <span className="text-green-600 hover:text-green-800 cursor-pointer">
                 Follow
@@ -123,13 +139,7 @@ const Blog: React.FC<BlogProps> = ({ params }) => {
       <div className="flex flex-col space-y-4 py-12">
         {blog?.content.map((item) => {
           if (item.type == "image") {
-            return (
-              <img
-                src={item.value}
-                alt=""
-                key={item.type}
-              />
-            );
+            return <img src={item.value} alt="" key={item.type} />;
           } else if (item.type == "section") {
             return (
               <section key={item.title} className="py-4 text-primary">
@@ -162,13 +172,17 @@ const Blog: React.FC<BlogProps> = ({ params }) => {
             );
           }
         })}
-                <hr className="my-4" />
-                <span className="inline-block mx-auto text-sm font-medium">
-                  For more info,{' '}
-                  <Link href={blog!.link} className="border-b border-b-transparent hover:border-b-blue-600 text-blue-600" target="_blank">
-                    Click Here
-                  </Link>
-                </span>
+        <hr className="my-4" />
+        <span className="inline-block mx-auto text-sm font-medium">
+          For more info,{" "}
+          <Link
+            href={blog!.link}
+            className="border-b border-b-transparent hover:border-b-blue-600 text-blue-600"
+            target="_blank"
+          >
+            Click Here
+          </Link>
+        </span>
       </div>
     </main>
   );
